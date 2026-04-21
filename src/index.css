@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer utilities {
+  .print-exact {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+}
+
+@media print {
+  @page {
+    margin: 0;
+    size: A4 portrait;
+  }
+  
+  body {
+    background: white !important;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+  
+  .a4-page {
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    transform: scale(1) !important;
+    width: 210mm !important;
+    min-height: 297mm !important;
+    background: transparent !important;
+  }
+
+  input, textarea {
+    border-color: transparent !important;
+    background: transparent !important;
+  }
+  
+  input::placeholder, textarea::placeholder {
+    color: transparent !important;
+  }
+
+  /* Make sure background colors print exactly as shown */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+}
