@@ -47,8 +47,11 @@ function convertToWords(num: number): string {
 
 function parseAmount(str: string): number {
   if (!str) return 0;
-  const num = Number(str.toString().replace(/[^0-9.-]+/g, ""));
-  return isNaN(num) ? 0 : num;
+  const isNegative = str.toString().trim().startsWith('-');
+  const cleanStr = str.toString().replace(/[^0-9.]/g, "");
+  if (!cleanStr) return 0;
+  const num = Number(cleanStr);
+  return isNaN(num) ? 0 : (isNegative ? -num : num);
 }
 
 function formatAmount(num: number): string {
